@@ -13,7 +13,7 @@ return {
         registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
         spelling = {
           enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
-          suggestions = 20, -- how many suggestions should be shown in the list?
+          suggestions = 30, -- how many suggestions should be shown in the list?
         },
         presets = {
           operators = true, -- adds help for operators like d, y, ...
@@ -64,25 +64,33 @@ return {
       -- triggers = {"<leader>"} -- or specify a list manually
     }
 
-    -- Register your key mappings
-    local wk = require("which-key")
-    wk.register({
-      -- your key mappings here
-      s = {
-        name = "TeleScope", -- optional group name
-        f = { "<cmd>Telescope find_files<cr>", "Find File" }, -- create a binding with label
-        g = { "<cmd>Telescope live_grep<cr>", "Grep String" }, -- create a binding with label
-        b = { "<cmd>Telescope buffers<cr>", "List Buffers" }, -- create a binding with label
-        h = { "<cmd>Telescope help_tags<cr>", "Find Help" }, -- create a binding with label
-        k = { "<cmd>Telescope keymaps<cr>", "Find Keymaps" }, -- create a binding with label
-        s = { "<cmd>Telescope builtin<cr>", "Find Select" }, -- create a binding with label
-        w = { "<cmd>Telescope grep_string<cr>", "Find Word" }, -- create a binding with label
-        d = { "<cmd>Telescope diagnostics<cr>", "Find Diagnostics" }, -- create a binding with label
-        r = { "<cmd>Telescope resume<cr>", "Find Resume" }, -- create a binding with label
-        ["."] = { "<cmd>Telescope oldfiles<cr>", "Find Recent Files" }, -- create a binding with label
-        ["<leader>"] = { "<cmd>Telescope buffers<cr>", "Find Buffers" }, -- create a binding with label
-      },
-    }, { prefix = "<leader>" })
+ -- Register your key mappings
+      local wk = require("which-key")
+     wk.register({
+          s = {
+              name = "TeleScope",
+              f = { "<cmd>Telescope find_files<cr>", "Find File" },
+              g = { "<cmd>Telescope live_grep<cr>", "Grep String" },
+              b = { "<cmd>Telescope buffers<cr>", "List Buffers" },
+              h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+              k = { "<cmd>Telescope keymaps<cr>", "Find Keymaps" },
+              s = { "<cmd>Telescope builtin<cr>", "Find Select" },
+              w = { "<cmd>Telescope grep_string<cr>", "Find Word" },
+              d = { "<cmd>Telescope diagnostics<cr>", "Find Diagnostics" },
+              r = { "<cmd>Telescope resume<cr>", "Find Resume" },
+              ["."] = { "<cmd>Telescope oldfiles<cr>", "Find Recent Files" },
+              ["<leader>"] = { "<cmd>Telescope buffers<cr>", "Find Buffers" },
+          },
+          c = {
+              name = "Copilot",
+              ["<C-j>"] = { '<cmd>lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-J>", true, true, true), "i", true)<CR>', "Accept Suggestion" },
+              ["<C-]>"] = { '<cmd>lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-]>", true, true, true), "i", true)<CR>', "Dismiss Suggestion" },
+              ["<M-]>"] = { '<cmd>lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(copilot-next)", true, true, true), "i", true)<CR>', "Next Suggestion" },
+              ["<M-[>"] = { '<cmd>lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(copilot-previous)", true, true, true), "i", true)<CR>', "Previous Suggestion" },
+              ["<M-\\>"] = { '<cmd>lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(copilot-suggest)", true, true, true), "i", true)<CR>', "Request Suggestion" },
+              ["<C-l"] = { '<cmd>lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(copilot-accept-word)", true, true, true), "i", true)<CR>', "Accept Word" },
+              ["<M-C-l>"] = { '<cmd>lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(copilot-accept-line)", true, true, true), "i", true)<CR>', "Accept Line" },
+          },
+      }, { prefix = "<leader>" })
   end
 }
-
