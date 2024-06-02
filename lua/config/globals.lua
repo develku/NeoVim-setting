@@ -5,3 +5,4 @@ vim.g.maplocalleader = " " -- set the local leader key
 vim.g.have_nerd_font = true
 vim.g.nerd_font = "Hack Nerd Font"
 vim.g.nerd_font_size = 12
+
