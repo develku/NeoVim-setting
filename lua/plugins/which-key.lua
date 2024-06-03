@@ -59,6 +59,7 @@ return {
       },
       ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
       hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate
+
       show_help = true, -- show help message on the command line when the popup is visible
       triggers = "auto", -- automatically setup triggers
       -- triggers = {"<leader>"} -- or specify a list manually
@@ -66,7 +67,7 @@ return {
 
  -- Register your key mappings
       local wk = require("which-key")
-     wk.register({
+      wk.register({
           s = {
               name = "TeleScope",
               f = { "<cmd>Telescope find_files<cr>", "Find File" },
@@ -80,16 +81,6 @@ return {
               r = { "<cmd>Telescope resume<cr>", "Find Resume" },
               ["."] = { "<cmd>Telescope oldfiles<cr>", "Find Recent Files" },
               ["<leader>"] = { "<cmd>Telescope buffers<cr>", "Find Buffers" },
-          },
-          c = {
-              name = "Copilot",
-              ["<C-j>"] = { '<cmd>lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-J>", true, true, true), "i", true)<CR>', "Accept Suggestion" },
-              ["<C-]>"] = { '<cmd>lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-]>", true, true, true), "i", true)<CR>', "Dismiss Suggestion" },
-              ["<M-]>"] = { '<cmd>lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(copilot-next)", true, true, true), "i", true)<CR>', "Next Suggestion" },
-              ["<M-[>"] = { '<cmd>lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(copilot-previous)", true, true, true), "i", true)<CR>', "Previous Suggestion" },
-              ["<M-\\>"] = { '<cmd>lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(copilot-suggest)", true, true, true), "i", true)<CR>', "Request Suggestion" },
-              ["<C-l"] = { '<cmd>lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(copilot-accept-word)", true, true, true), "i", true)<CR>', "Accept Word" },
-              ["<M-C-l>"] = { '<cmd>lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(copilot-accept-line)", true, true, true), "i", true)<CR>', "Accept Line" },
           },
       }, { prefix = "<leader>" })
   end

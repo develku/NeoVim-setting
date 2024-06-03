@@ -5,7 +5,7 @@ local mapKey = require("utils.keyMapper").mapKey -- load the keyMapper function
 mapKey('<leader>t', ':Neotree toggle<CR>', 'n')
 
 -- clear search highlights
-mapKey('<Esc>', ':nohlsearch<CR>', 'n') -- clear search highlights in normal mode with ESC
+mapKey('<leader>h', ':nohlsearch<CR>', 'n') -- clear search highlights in normal mode with ESC
 
 -- Split nnvigation easier, use Ctrl + hjkl to navigate between splits
 mapKey('<C-h>', '<C-w><C-h>', 'n', { desc = 'Move focus to the left window' })
