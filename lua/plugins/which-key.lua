@@ -81,7 +81,11 @@ return {
               r = { "<cmd>Telescope resume<cr>", "Find Resume" },
               ["."] = { "<cmd>Telescope oldfiles<cr>", "Find Recent Files" },
               ["<leader>"] = { "<cmd>Telescope buffers<cr>", "Find Buffers" },
+<<<<<<< HEAD
           },
       }, { prefix = "<leader>" })
+=======
+          }, { prefix = "<leader>" }})
+>>>>>>> 17bd400 (which key copilot remove)
   end
 }
