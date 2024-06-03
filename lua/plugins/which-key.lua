@@ -59,33 +59,29 @@ return {
       },
       ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
       hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate
-
       show_help = true, -- show help message on the command line when the popup is visible
       triggers = "auto", -- automatically setup triggers
       -- triggers = {"<leader>"} -- or specify a list manually
     }
 
- -- Register your key mappings
-      local wk = require("which-key")
-      wk.register({
-          s = {
-              name = "TeleScope",
-              f = { "<cmd>Telescope find_files<cr>", "Find File" },
-              g = { "<cmd>Telescope live_grep<cr>", "Grep String" },
-              b = { "<cmd>Telescope buffers<cr>", "List Buffers" },
-              h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-              k = { "<cmd>Telescope keymaps<cr>", "Find Keymaps" },
-              s = { "<cmd>Telescope builtin<cr>", "Find Select" },
-              w = { "<cmd>Telescope grep_string<cr>", "Find Word" },
-              d = { "<cmd>Telescope diagnostics<cr>", "Find Diagnostics" },
-              r = { "<cmd>Telescope resume<cr>", "Find Resume" },
-              ["."] = { "<cmd>Telescope oldfiles<cr>", "Find Recent Files" },
-              ["<leader>"] = { "<cmd>Telescope buffers<cr>", "Find Buffers" },
-<<<<<<< HEAD
-          },
-      }, { prefix = "<leader>" })
-=======
-          }, { prefix = "<leader>" }})
->>>>>>> 17bd400 (which key copilot remove)
+    -- Register your key mappings
+    local wk = require("which-key")
+    wk.register({
+      s = {
+        name = "TeleScope",
+        f = { "<cmd>Telescope find_files<cr>", "Find File" },
+        g = { "<cmd>Telescope live_grep<cr>", "Grep String" },
+        b = { "<cmd>Telescope buffers<cr>", "List Buffers" },
+        h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+        k = { "<cmd>Telescope keymaps<cr>", "Find Keymaps" },
+        s = { "<cmd>Telescope builtin<cr>", "Find Select" },
+        w = { "<cmd>Telescope grep_string<cr>", "Find Word" },
+        d = { "<cmd>Telescope diagnostics<cr>", "Find Diagnostics" },
+        r = { "<cmd>Telescope resume<cr>", "Find Resume" },
+        ["."] = { "<cmd>Telescope oldfiles<cr>", "Find Recent Files" },
+        ["<leader>"] = { "<cmd>Telescope buffers<cr>", "Find Buffers" },
+      },
+    }, { prefix = "<leader>" })
   end
 }
+
