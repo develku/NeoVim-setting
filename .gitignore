@@ -1,0 +1,79 @@
+# General temporary files
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.DocumentRevisions-V100
+
+# Node.js modules folder
+node_modules/
+
+# Bower components folder
+bower_components/
+
+# Build outputs
+dist/
+build/
+out/
+
+# Log files
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor settings and files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Python virtual environment
+venv/
+*.pyc
+
+# Compiled source files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Archive packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Database files
+*.sql
+*.sqlite
+
+# Backup files
+*.bak
+
+# Other directories to ignore
+cache/
+tmp/
+temp/
+
