@@ -12,7 +12,7 @@ return {
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "lua_ls",
-                    "tsserver",
+                    "ts_ls",
                     "rust_analyzer",
                     "pyright",
                 },
@@ -34,7 +34,7 @@ return {
               }
             }
           })
-          lspconfig.tsserver.setup({})
+          lspconfig.ts_ls.setup({})
           lspconfig.rust_analyzer.setup({})
           lspconfig.pyright.setup({})
 

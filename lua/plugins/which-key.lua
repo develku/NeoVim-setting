@@ -9,7 +9,7 @@ return {
     -- Setup for which-key plugin
     require("which-key").setup({
       -- Plugin configuration
-      preset = "classic",  -- or "modern" / "helix" for different layouts
+      preset = "modern",  -- "classic" or "modern" / "helix" for different layouts
       plugins = {
         marks = true,           -- Show a list of your marks when pressing ' or `
         registers = true,       -- Show your registers on " in NORMAL or <C-r> in INSERT mode
