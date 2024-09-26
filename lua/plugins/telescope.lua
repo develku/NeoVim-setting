@@ -3,22 +3,23 @@ local mapKey = require("utils.keyMapper").mapKey  -- Ensure the keyMapper functi
 return {
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.6',
+    tag = '0.1.8',
+    branch = '0.1.x',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local builtin = require('telescope.builtin')
       -- Telescope shortcuts
-      mapKey('<leader>sf', builtin.find_files, 'n', { desc = '[S]earch [F]iles' })
-      mapKey('<leader>sg', builtin.live_grep, 'n', { desc = '[S]earch by [G]rep' })
-      mapKey('<leader>fb', builtin.buffers, 'n', { desc = '[S]earch [B]uffers' }) -- buffers
-      mapKey('<leader>fh', builtin.help_tags, 'n', { desc = '[S]earch [H]elp Tags' }) -- help tags
-      mapKey('<leader>sh', builtin.help_tags, 'n', { desc = '[S]earch [H]elp' })
-      mapKey('<leader>sk', builtin.keymaps, 'n', { desc = '[S]earch [K]eymaps' })
-      mapKey('<leader>ss', builtin.builtin, 'n', { desc = '[S]earch [S]elect Telescope' })
-      mapKey('<leader>sw', builtin.grep_string, 'n', { desc = '[S]earch current [W]ord' })
-      mapKey('<leader>sd', builtin.diagnostics, 'n', { desc = '[S]earch [D]iagnostics' })
-      mapKey('<leader>sr', builtin.resume, 'n', { desc = '[S]earch [R]esume' })
-      mapKey('<leader>s.', builtin.oldfiles, 'n', { desc = '[S]earch Recent Files ("." for repeat)' })
+      mapKey('<leader>ff', builtin.find_files, 'n', { desc = '[F]ind [F]iles' })
+      mapKey('<leader>fg', builtin.live_grep, 'n', { desc = '[F]ind by Live [G]rep' })
+      mapKey('<leader>fb', builtin.buffers, 'n', { desc = '[F]ind [B]uffers' }) -- buffers
+      mapKey('<leader>fh', builtin.help_tags, 'n', { desc = '[F]ind [H]elp Tags' }) -- help tags
+      mapKey('<leader>fh', builtin.help_tags, 'n', { desc = '[F]ind [H]elp' })
+      mapKey('<leader>fk', builtin.keymaps, 'n', { desc = '[F]ind [K]eymaps' })
+      mapKey('<leader>fs', builtin.builtin, 'n', { desc = '[F]ind [S]elect Telescope' })
+      mapKey('<leader>fw', builtin.grep_string, 'n', { desc = '[F]ind current [W]ord' })
+      mapKey('<leader>fd', builtin.diagnostics, 'n', { desc = '[F]ind [D]iagnostics' })
+      mapKey('<leader>fr', builtin.resume, 'n', { desc = '[F]ind [R]esume' })
+      mapKey('<leader>f.', builtin.oldfiles, 'n', { desc = '[F]ind Recent Files ("." for repeat)' })
       mapKey('<leader><leader>', builtin.buffers, 'n', { desc = '[ ] Find existing buffers' })
     end,
   },

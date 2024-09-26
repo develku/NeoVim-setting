@@ -2,86 +2,78 @@ return {
   "folke/which-key.nvim",
   config = function()
 
-      -- Basic settings
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
+    -- Set the timeout for key bindings
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
 
-    require("which-key").setup {
-      -- Configuration for which-key
+    -- Setup for which-key plugin
+    require("which-key").setup({
+      -- Plugin configuration
+      preset = "classic",  -- or "modern" / "helix" for different layouts
       plugins = {
-        marks = true, -- shows a list of your marks on ' and `
-        registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+        marks = true,           -- Show a list of your marks when pressing ' or `
+        registers = true,       -- Show your registers on " in NORMAL or <C-r> in INSERT mode
         spelling = {
-          enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
-          suggestions = 30, -- how many suggestions should be shown in the list?
+          enabled = true,       -- Show spelling suggestions when pressing z=
+          suggestions = 30,     -- Number of spelling suggestions to show
         },
         presets = {
-          operators = true, -- adds help for operators like d, y, ...
-          motions = true, -- adds help for motions
-          text_objects = true, -- help for text objects triggered after entering an operator
-          windows = true, -- default bindings on <c-w>
-          nav = true, -- misc bindings to work with windows
-          z = true, -- bindings for folds, spelling and others prefixed with z
-          g = true, -- bindings for prefixed with g
+          operators = true,     -- Adds help for operators like d, y, etc.
+          motions = true,       -- Adds help for motion-related commands
+          text_objects = true,  -- Adds help for text objects
+          windows = true,       -- Default bindings for <c-w> (window management)
+          nav = true,           -- Miscellaneous bindings for window navigation
+          z = true,             -- Bindings for folds, spelling, etc., prefixed with 'z'
+          g = true,             -- Bindings prefixed with 'g' (like 'gq', 'gg', etc.)
         },
       },
-      -- add operators that will trigger motion and text object completion
-      -- to enable all native operators, set the preset / operators to true
-      operators = { gc = "Comments" },
-      key_labels = {
-        -- override the label used to display some keys. It doesn't effect WK in any other way.
-        -- For example:
-        -- ["<space>"] = "SPC",
-        -- ["<cr>"] = "RET",
-        -- ["<tab>"] = "TAB",
+
+      -- Defer certain mappings
+      defer = function(ctx)
+        -- Delay only for visual or blockwise visual modes
+        return vim.list_contains({ "V", "<C-V>" }, ctx.mode)
+      end,
+
+      -- Customize key labels in the help popup
+      replace = {
+        key = {
+          { "<space>", "SPC" }, -- Show "<space>" as "SPC"
+          { "<cr>", "RET" },    -- Show "<cr>" (Enter) as "RET"
+          { "<tab>", "TAB" },   -- Show "<tab>" as "TAB"
+        },
       },
-      icons = {
-        breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-        separator = "➜", -- symbol used between a key and it's label
-        group = "+", -- symbol prepended to a group
+
+      -- Customize layout
+      win = {
+        padding = { 1, 2 },    -- Extra padding
+        title = true,          -- Show title
+        title_pos = "center",  -- Center the title
+        zindex = 1000,         -- Z-index priority
       },
-      popup_mappings = {
-        scroll_down = '<c-d>', -- binding to scroll down inside the popup
-        scroll_up = '<c-u>', -- binding to scroll up inside the popup
-      },
-      window = {
-        border = "none", -- none, single, double, shadow
-        position = "bottom", -- bottom, top
-        margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-        padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-        winblend = 0
-      },
+
+      -- Layout properties
       layout = {
-        height = { min = 4, max = 25 }, -- min and max height of the columns
-        width = { min = 20, max = 50 }, -- min and max width of the columns
-        spacing = 3, -- spacing between columns
-        align = "left", -- align columns left, center or right
+        width = { min = 20 }, -- Minimum width for the columns
+        spacing = 3,          -- Spacing between columns
       },
-      ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
-      hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate
-      show_help = true, -- show help message on the command line when the popup is visible
-      triggers = "auto", -- automatically setup triggers
-      -- triggers = {"<leader>"} -- or specify a list manually
-    }
+
+      -- Key mappings for scrolling inside the popup window
+      keys = {
+        scroll_down = '<c-d>', -- Bind Ctrl-D to scroll down inside the popup
+        scroll_up = '<c-u>',   -- Bind Ctrl-U to scroll up inside the popup
+      },
+
+      -- Show help message on the command line when the popup is visible
+      show_help = true,
+
+      -- Automatically setup triggers for leader-based mappings
+      triggers = { "<auto>" }, -- This can be customized based on your needs
+    })
 
     -- Register your key mappings
     local wk = require("which-key")
-    wk.register({
-      s = {
-        name = "TeleScope",
-        f = { "<cmd>Telescope find_files<cr>", "Find File" },
-        g = { "<cmd>Telescope live_grep<cr>", "Grep String" },
-        b = { "<cmd>Telescope buffers<cr>", "List Buffers" },
-        h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-        k = { "<cmd>Telescope keymaps<cr>", "Find Keymaps" },
-        s = { "<cmd>Telescope builtin<cr>", "Find Select" },
-        w = { "<cmd>Telescope grep_string<cr>", "Find Word" },
-        d = { "<cmd>Telescope diagnostics<cr>", "Find Diagnostics" },
-        r = { "<cmd>Telescope resume<cr>", "Find Resume" },
-        ["."] = { "<cmd>Telescope oldfiles<cr>", "Find Recent Files" },
-        ["<leader>"] = { "<cmd>Telescope buffers<cr>", "Find Buffers" },
-      },
-    }, { prefix = "<leader>" })
-  end
+    wk.add({
+      { "<leader>s", group = "file" }, -- Group name for file-related operations
+    })
+  end,
 }
-
