@@ -1,21 +1,3 @@
-local mapKey = require("utils.keyMapper").mapKey -- load the keyMapper function
-
--- Neotree toggle
--- if you press space + e, it will open the neotree or close the neotree in normal mode
-mapKey('<leader>t', ':Neotree toggle<CR>', 'n')
-
--- clear search highlights
-mapKey('<leader>h', ':nohlsearch<CR>', 'n') -- clear search highlights in normal mode with ESC
-
--- Split nnvigation easier, use Ctrl + hjkl to navigate between splits
-mapKey('<C-h>', '<C-w>h', 'n', { desc = 'Move focus to the left window' })
-mapKey('<C-j>', '<C-w>j', 'n', { desc = 'Move focus to the bottom window' })
-mapKey('<C-k>', '<C-w>k', 'n', { desc = 'Move focus to the top window' })
-mapKey('<C-l>', '<C-w>l', 'n', { desc = 'Move focus to the right window' })
-
--- Diagnostic keymaps (Find next and previous diagnostic)
-mapKey('[d', vim.diagnostic.goto_prev, 'n', { desc = 'Go to previous [D]iagnostic message' })
-mapKey(']d', vim.diagnostic.goto_next, 'n', { desc = 'Go to next [D]iagnostic message' })
-mapKey('<leader>q', vim.diagnostic.setloclist, 'n', { desc = 'Open diagnostic [Q]uickfix list' })
-mapKey('<leader>e', vim.diagnostic.open_float, 'n', { desc = 'Open diagnostic list [E]rror messages' })
-
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
