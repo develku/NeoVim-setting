@@ -14,6 +14,7 @@ return {
   -- name = "catppuccin",
   -- lazy = false, -- make sure we load this during startup if it is your main colorscheme.
   -- priority = 1000, -- make sure to load this before all the other start plugins
+  -- lazy = false, -- Do NOT load the lazy
   -- config = function()
   --   require("catppuccin").setup({
   --     flavour = "latte", -- Options: "latte" (light), "frappe" (medium contrast), "macchiato" (darker), "mocha" (darkest)
