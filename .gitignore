@@ -6,3 +6,10 @@ debug
 foo.*
 *.log
 data
+
+# Ignore everything 
+*
+
+# But keep config and plugins directories
+!config/
+!plugins/
